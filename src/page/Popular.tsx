@@ -33,7 +33,7 @@ const Popular: React.FC = () => {
             <p className="text-sm">{data.upload_on}</p>
           </div>
           <figure>
-            <img src={data.thumb} className="w-full h-32 sm:h-36" />
+            <img alt="thumb" src={data.thumb} className="w-full h-32 sm:h-36" />
           </figure>
         </div>
       );

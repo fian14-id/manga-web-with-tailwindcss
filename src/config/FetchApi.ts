@@ -4,8 +4,8 @@ const endpoint = "https://manga.fian014.site/api";
 
 export const searchManga = async(q: string) => {
     try {
-        const search = await axios.get(`${endpoint}/search/${q}`)
-        return
+        const search = await axios.get(`${endpoint}/search/${q}`)        
+        return search.data.manga_list
     } catch (err) {
         console.log(err);
     }

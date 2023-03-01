@@ -1,8 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Setting } from "../config/Setting";
+import { searchManga } from "../config/FetchApi";
+interface SearchData {
+  thumb: string;
+  title: string;
+  type: string;
+  updated_on: string;
+}
 
-const Navbar = () => {
+const Navbar : React.FC = () => {
+
+  const [result, setResult] = React.useState<SearchData[]>([])
+
+  const Search = async(q: string) => {
+    const query = await searchManga(q)
+    setResult(query)
+  }
+
+  React.useEffect(() => {
+    searchManga
+  },[])
+
   return (
     <header className="navbar bg-base-100 xl:w-11/12 m-auto">
       <div className="navbar-start">
@@ -38,9 +57,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <span
-          className="btn btn-ghost normal-case text-xl font-bold"
-        >
+        <span className="btn btn-ghost normal-case text-xl font-bold">
           <Link to="/home">{Setting.title}</Link>
         </span>
       </div>
@@ -75,10 +92,30 @@ const Navbar = () => {
               <input
                 type="text"
                 placeholder="type here..."
+                onChange={(e) => Search(e.target.value)}
                 className="outline-none w-full shadow-sm focus:shadow-md ease-in-out duration-300 px-4 rounded-md bg-none dark:bg-none"
               />
-              <span className="uil uil-search btn ml-2"></span>
+              <button
+                title="search"
+                className="uil uil-search btn ml-2"
+              ></button>
             </div>
+            {result ? (
+              result.map((data, i) => {
+                return (
+                  <main key={i} className="flex gap-4 w-full h-16 my-4">
+                    <img src={data.thumb} alt="result photo" loading="lazy" />
+                    <div className="flex ml-2 flex-col">
+                      <h2 className="font-bold text-sm">{data.title}</h2>
+                      <p className="text-xs italic">{data.type}</p>
+                      <p className="text-[.6rem]">{data.updated_on}</p>
+                    </div>
+                  </main>
+                );
+              })
+            ) : (
+              <p className="mt-4 text-center">no result</p>
+            )}
           </div>
         </div>
         <a
