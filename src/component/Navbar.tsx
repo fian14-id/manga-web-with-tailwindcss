@@ -14,8 +14,12 @@ const Navbar : React.FC = () => {
   const [result, setResult] = React.useState<SearchData[]>([])
 
   const Search = async(q: string) => {
-    const query = await searchManga(q)
-    setResult(query)
+    if (q.length > 3) {
+      const query = await searchManga(q);
+      setResult(query);
+    } else if (q.length === 0) {
+      setResult([])
+    }
   }
 
   React.useEffect(() => {
@@ -102,11 +106,15 @@ const Navbar : React.FC = () => {
             </div>
             {result ? (
               result.map((data, i) => {
+                const shortenedTitle =
+                  data.title.length > 30
+                    ? `${data.title.slice(0, 30)}...`
+                    : data.title;
                 return (
                   <main key={i} className="flex gap-4 w-full h-16 my-4">
                     <img src={data.thumb} alt="result photo" loading="lazy" />
                     <div className="flex ml-2 flex-col">
-                      <h2 className="font-bold text-sm">{data.title}</h2>
+                      <h2 className="font-bold text-sm">{shortenedTitle}</h2>
                       <p className="text-xs italic">{data.type}</p>
                       <p className="text-[.6rem]">{data.updated_on}</p>
                     </div>
@@ -114,7 +122,14 @@ const Navbar : React.FC = () => {
                 );
               })
             ) : (
-              <p className="mt-4 text-center">no result</p>
+              <main className="flex gap-4 w-full h-16 my-4">
+                <div className="w-full"></div>
+                <div className="flex ml-2 flex-col">
+                  <span className="bg-gray-200 dark:bg-gray-400 w-full"></span>
+                  <span className="w-5"></span>
+                  <span className="w-7"></span>
+                </div>
+              </main>
             )}
           </div>
         </div>
