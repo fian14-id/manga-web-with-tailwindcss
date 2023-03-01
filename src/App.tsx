@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 
-import './App.css'
+import './css/main.css'
 
 import Home from "./page/Home"
 import Beranda from './page/Beranda'
