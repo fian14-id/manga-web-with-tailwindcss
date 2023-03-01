@@ -4,7 +4,7 @@ const Loading = () => {
   
   const Load = () => {
     return (
-      <div className="card w-80 lg:w-96 bg-base-100 shadow-xl mt-4">
+      <div className="card w-full bg-base-100 shadow-xl mt-4">
       <div className="card-body animate-pulse">
         <span className="w-16 h-6 bg-gray-200 dark:bg-gray-400"></span>
         <span className="bg-gray-200 dark:bg-gray-400 w-full h-4"></span>
