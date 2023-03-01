@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "watch": "npx tailwindcss -i ./src/css/App.css -o ./src/css/main.css --watch",
-    "minify": "npx tailwindcss -o ./src/css/minifycss --minify",
+    "minify": "npx tailwindcss -o ./src/css/minify.css --minify",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
