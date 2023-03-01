@@ -11,6 +11,7 @@ import Popular from './page/Popular'
 import DarkMode from './component/DarkMode'
 import Recommend from './page/Recommend'
 import Genres from './page/Genres'
+import NotFound from './page/NotFound'
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
             </main>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
