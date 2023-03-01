@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import './css/main.css'
+import './css/minify.css'
 
 import Home from "./page/Home"
 import Beranda from './page/Beranda'
