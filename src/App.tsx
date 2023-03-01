@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import LoadingBar from 'react-top-loading-bar'
 
 import './css/main.css'
 
@@ -15,11 +14,8 @@ import NotFound from './page/NotFound'
 
 function App() {
 
-  const [progress, setProgress] = React.useState(0)
-
   return (
     <Router>
-      <LoadingBar color="8F7FFF" progress={progress} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
