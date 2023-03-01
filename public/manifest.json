@@ -1,5 +1,7 @@
 {
- "name": "App",
+ "name": "My Manga",
+ "short_name": "fian14.id",
+ "description": "pwa Manga Web by fian14.id",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
