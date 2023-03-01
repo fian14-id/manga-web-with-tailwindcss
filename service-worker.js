@@ -1,9 +1,9 @@
 // Installing service worker
-const CACHE_NAME = "pwa-sobat-coding";
+const CACHE_NAME = "pwa-manga-web";
 
 /* Add relative URL of all the static content you want to store in
  * cache storage (this will help us use our app offline)*/
-let resourcesToCache = ["src/App.tsx", "src/css/main.css"];
+let resourcesToCache = ["src/App.tsx", "src/css/minify.css"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
