@@ -9,7 +9,7 @@ export const Setting = {
     ],
     contact: [
       {
-        name: "Portofolio",
+        name: "About Me",
         path: "https://fiancuy.my.id",
       },
       {

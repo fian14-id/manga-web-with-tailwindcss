@@ -6,6 +6,7 @@ interface SearchData {
   thumb: string;
   title: string;
   type: string;
+  endpoint: string;
   updated_on: string;
 }
 
@@ -17,7 +18,7 @@ const Navbar : React.FC = () => {
     if (q.length > 3) {
       const query = await searchManga(q);
       setResult(query);
-    } else if (q.length === 0) {
+    } else if (q.length < 2) {
       setResult([])
     }
   }
@@ -114,7 +115,9 @@ const Navbar : React.FC = () => {
                   <main key={i} className="flex gap-4 w-full h-16 my-4">
                     <img src={data.thumb} alt="result photo" loading="lazy" />
                     <div className="flex ml-2 flex-col">
-                      <h2 className="font-bold text-sm">{shortenedTitle}</h2>
+                      <Link to={data.endpoint}>
+                        <h2 className="font-bold text-sm">{shortenedTitle}</h2>
+                      </Link>
                       <p className="text-xs italic">{data.type}</p>
                       <p className="text-[.6rem]">{data.updated_on}</p>
                     </div>
