@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom';
 
 const NotFound = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <h1 className="text-5xl font-bold mb-5">404</h1>
-      <p className="text-lg mb-5">Maaf, halaman yang kamu cari tidak ditemukan.</p>
-      <Link to="/" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+    <div className="flex flex-col justify-center bg-slate-50 dark:bg-slate-400 items-center h-screen">
+      <h1 className="text-5xl font-bold mb-5 text-black dark:text-white">
+        404
+      </h1>
+      <p className="text-lg mb-5 text-black dark:text-white">
+        Sorry, the page you are looking for was not found.
+      </p>
+      <Link
+        to="/"
+        className="bg-primary text-white py-2 px-4 hover:bg-secondary active:scale-90 ease-out duration-300 rounded shadow-md"
+      >
         Kembali ke Beranda
       </Link>
     </div>
