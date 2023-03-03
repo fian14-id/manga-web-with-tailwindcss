@@ -5,7 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/global-logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/icon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/android-icon-192x192.png" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      href="/android-icon-192x192.png"
+      type="image/png"
+    />
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
@@ -67,5 +71,19 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((registration) => {
+              console.log("Service worker registered:", registration);
+            })
+            .catch((error) => {
+              console.error("Service worker registration failed:", error);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
