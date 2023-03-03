@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from "../component/LoadingBox";
 import { popularManga } from "../config/FetchApi";
 import { Link } from "react-router-dom";
+import ErrorGet from "./handlingError/ErrorGet";
 
 interface PopularData {
   title: string;
@@ -11,6 +12,11 @@ interface PopularData {
 }
 
 const Popular: React.FC = () => {
+
+  const handlingApiError = (error : any) => {
+    console.log('Error:', error);
+    
+  }
 
   const [popular, setPopular] = useState<PopularData[]>([]);
 
@@ -42,16 +48,21 @@ const Popular: React.FC = () => {
 
   return (
     <main className="w-11/12 m-auto mt-8 py-8">
-      <h2 className="font-bold text-xl text-[#8F7FFF] underline underline-offset-2">
-        Popular Manga
-      </h2>
-      {popular.length === 0 ? (
-        <Loading />
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {listPopularManga()}
-        </div>
-      )}
+      <ErrorGet
+        apiUrl="https://manga.fian014.site/api"
+        onError={handlingApiError}
+      >
+        <h2 className="font-bold text-xl text-[#8F7FFF] underline underline-offset-2">
+          Popular Manga
+        </h2>
+        {popular.length === 0 ? (
+          <Loading />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {listPopularManga()}
+          </div>
+        )}
+      </ErrorGet>
     </main>
   );
 };

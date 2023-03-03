@@ -3,10 +3,10 @@ import React from "react";
 const BtnLoad = () => {
   const Load = () => {
     return (
-      <div className="card w-full bg-base-100 shadow-xl mt-4">
+      <div className="card w-full rounded bg-gray-200 dark:bg-gray-400 h-10 shadow-xl mt-4">
         <div className="card-body animate-pulse">
-            <button className="bg-gray-200 dark:bg-gray-400">{" "}</button>
-          </div>
+          <button title="loading...">&nbsp;</button>
+        </div>
       </div>
     );
   };

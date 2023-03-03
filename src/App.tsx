@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import './css/minify.css'
+import './css/main.css'
 
 import Home from "./page/Home"
 import Beranda from './page/Beranda'
@@ -11,6 +11,7 @@ import DarkMode from './component/DarkMode'
 import Recommend from './page/Recommend'
 import Genres from './page/Genres'
 import NotFound from './page/NotFound'
+import Detail from './page/Detail'
 
 function App() {
 
@@ -54,6 +55,16 @@ function App() {
             <main className="relative">
               <Navbar />
               <Genres />
+              <DarkMode />
+            </main>
+          }
+        />
+        <Route
+          path="detail"
+          element={
+            <main className="relative">
+              <Navbar />
+              <Detail />
               <DarkMode />
             </main>
           }
