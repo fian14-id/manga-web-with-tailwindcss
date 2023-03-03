@@ -1,6 +1,6 @@
 {
- "name": "My Manga",
- "short_name": "fian14.id",
+ "name": "Manga Web",
+ "short_name": "MaWb",
  "description": "pwa Manga Web by fian14.id",
  "icons": [
   {
@@ -40,8 +40,8 @@
    "density": "4.0"
   }
  ],
- "start_url": "../index.html",
- "display": "fullscreen",
+ "start_url": "/",
+ "display": "standalone",
  "theme_color": "#6D67E4",
  "background_color": "#f6f9fc"
 }
