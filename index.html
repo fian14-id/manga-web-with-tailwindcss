@@ -77,6 +77,20 @@
           navigator.serviceWorker
             .register("/service-worker.js")
             .then((registration) => {
+              registration.showNotification('Instal Aplikasi',
+        {
+          body: 'Bisa di Install Masbro',
+          icon: '/android-icon-512x512.png',
+          vibrate: [200, 100, 200],
+          tag: 'install-app',
+          actions: [
+            {
+              action: 'install',
+              title: 'Instal',
+              icon: '/android-icon-512x512.png'
+            }
+          ]
+        });
               console.log("Service worker registered:", registration);
             })
             .catch((error) => {
