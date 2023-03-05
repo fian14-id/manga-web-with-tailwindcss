@@ -1,89 +1,40 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import './css/minify.css'
-import './css/Global.css'
+import "./css/minify.css";
+import "./css/Global.css";
 
-import Home from "./page/Home"
-import Beranda from './page/Beranda'
-import Navbar from './component/Navbar'
-import Popular from './page/Popular'
-import DarkMode from './component/DarkMode'
-import Recommend from './page/Recommend'
-import Genres from './page/Genres'
-import NotFound from './page/NotFound'
-import Detail from './page/Detail'
-import Chapter from './page/Chapter'
+import Navbar from "./component/Navbar";
+import DarkMode from "./component/DarkMode";
+import NotFound from "./page/NotFound";
+
+const Home = lazy(() => import("./page/Home"));
+const Beranda = lazy(() => import("./page/Beranda"));
+const Popular = lazy(() => import("./page/Popular"));
+const Recommend = lazy(() => import("./page/Recommend"));
+const Genres = lazy(() => import("./page/Genres"));
+const Detail = lazy(() => import("./page/Detail"));
+const Chapter = lazy(() => import("./page/Chapter"));
 
 function App() {
-
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="home"
-          element={
-            <main className="relative">
-              <Navbar />
-              <Beranda />
-              <DarkMode />
-            </main>
-          }
-        />
-        <Route
-          path="popular"
-          element={
-            <main className="relative">
-              <Navbar />
-              <Popular />
-              <DarkMode />
-            </main>
-          }
-        />
-        <Route
-          path="recommended"
-          element={
-            <main className="relative">
-              <Navbar />
-              <Recommend />
-              <DarkMode />
-            </main>
-          }
-        />
-        <Route
-          path="genres"
-          element={
-            <main className="relative">
-              <Navbar />
-              <Genres />
-              <DarkMode />
-            </main>
-          }
-        />
-        <Route
-          path="/detail/:endpoint"
-          element={
-            <main className="relative">
-              <Navbar />
-              <Detail />
-              <DarkMode />
-            </main>
-          }
-        />
-        <Route
-          path="/chapter/:endpoint"
-          element={
-            <main className="relative">
-              <Navbar />
-              <Chapter />
-              <DarkMode />
-            </main>
-          }
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Navbar />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="home" element={<Beranda />} />
+          <Route path="popular" element={<Popular />} />
+          <Route path="recommended" element={<Recommend />} />
+          <Route path="genres" element={<Genres />} />
+          <Route path="/detail/:endpoint" element={<Detail />} />
+          <Route path="/chapter/:endpoint" element={<Chapter />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+      <DarkMode />
     </Router>
   );
 }
 
-export default App
+export default App;
