@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 interface ApiDataProps {
   apiUrl: string;
-  onError?: (error: any) => void;
+  onError?: (error: AxiosError) => void;
   children: React.ReactNode;
 }
 
 const ErrorGet: React.FC<ApiDataProps> = ({ apiUrl, onError, children }) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[]>([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {

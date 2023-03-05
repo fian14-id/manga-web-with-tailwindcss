@@ -13,10 +13,6 @@ export const Setting = {
         path: "https://fiancuy.my.id",
       },
       {
-        name: "Random Website",
-        path: "https://fian014.site",
-      },
-      {
         name: "Anime API",
         path: "https://anime.fian014.site/",
       },

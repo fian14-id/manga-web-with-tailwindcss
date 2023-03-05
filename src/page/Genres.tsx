@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BtnLoad from "../component/BtnLoad";
+import BtnLoad from "../component/Load/BtnLoad";
 import { GenreManga } from "../config/FetchApi";
 import { Link } from "react-router-dom";
 
@@ -12,16 +12,22 @@ const Genres: React.FC = () => {
   const [genre, setGenre] = useState<PopularData[]>([]);
 
   useEffect(() => {
+    let isMounted = true;
     GenreManga().then((res) => {
-      setGenre(res);
+      if (isMounted) {
+        setGenre(res);
+      }
     });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const listPopularManga = (): JSX.Element[] => {
     return genre.map((data, i) => {
       return (
         <div key={i} className="card bg-base-100 shadow-xl mt-4">
-          <Link to={data.endpoint}>
+          <Link to={`/genre/${data.endpoint}`}>
             <button className="btn-primary px-4 py-2 rounded-md w-full">
               {data.genre_name}
             </button>

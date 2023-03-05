@@ -66,7 +66,7 @@ const Navbar : React.FC = () => {
           <Link to="/home">{Setting.title}</Link>
         </span>
       </div>
-      <div className="navbar-end">
+      <nav className="navbar-end">
         <label htmlFor="search" className="btn btn-ghost btn-circle">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@ const Navbar : React.FC = () => {
                   <main key={i} className="flex gap-4 w-full h-16 my-4">
                     <img src={data.thumb} alt="result photo" loading="lazy" />
                     <div className="flex ml-2 flex-col">
-                      <Link to={data.endpoint}>
+                      <Link to={`/detail/${data.endpoint}`}>
                         <h2 className="font-bold text-sm">{shortenedTitle}</h2>
                       </Link>
                       <p className="text-xs italic">{data.type}</p>
@@ -144,7 +144,7 @@ const Navbar : React.FC = () => {
         >
           <span className="uil uil-github text-2xl"></span>
         </a>
-      </div>
+      </nav>
     </header>
   );
 };

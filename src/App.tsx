@@ -1,7 +1,7 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import './css/main.css'
+import './css/minify.css'
+import './css/Global.css'
 
 import Home from "./page/Home"
 import Beranda from './page/Beranda'
@@ -12,6 +12,7 @@ import Recommend from './page/Recommend'
 import Genres from './page/Genres'
 import NotFound from './page/NotFound'
 import Detail from './page/Detail'
+import Chapter from './page/Chapter'
 
 function App() {
 
@@ -60,11 +61,21 @@ function App() {
           }
         />
         <Route
-          path="detail"
+          path="/detail/:endpoint"
           element={
             <main className="relative">
               <Navbar />
               <Detail />
+              <DarkMode />
+            </main>
+          }
+        />
+        <Route
+          path="/chapter/:endpoint"
+          element={
+            <main className="relative">
+              <Navbar />
+              <Chapter />
               <DarkMode />
             </main>
           }

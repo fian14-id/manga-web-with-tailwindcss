@@ -11,7 +11,7 @@ const NotFound = () => {
         Sorry, the page you are looking for was not found.
       </p>
       <Link
-        to="/"
+        to="/home"
         className="bg-primary text-white py-2 px-4 hover:shadow-lg hover:-translate-y-1 active:scale-90 ease-out duration-300 rounded shadow-md"
       >
         Kembali ke Beranda

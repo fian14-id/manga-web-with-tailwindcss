@@ -1,9 +1,8 @@
-import React, {useEffect} from "react";
+import {useEffect} from "react";
 import { Setting } from "../config/Setting";
 import { popularManga } from "../config/FetchApi"
 import myLogo from "../assets/global-logo.png"
 import Footer from "../component/Footer";
-import Loading from "../component/LoadingBox";
 
 const Beranda = () => {
 
