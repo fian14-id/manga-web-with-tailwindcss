@@ -46,7 +46,7 @@
       "type": "image/png"
     }
   ],
-  "scope": "/",
+  "scope": "../",
   "start_url": "../",
   "display": "standalone",
   "theme_color": "#6D67E4",
