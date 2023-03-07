@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { ChapterManga } from "../config/FetchApi";
+import { useParams, useNavigate } from "react-router-dom";
+import { ChapterManga, DetailManga } from "../config/FetchApi";
 
 interface ChapterImage {
   chapter_id: string;
   chapter_image_link: string;
 }
 
+interface Chapter {
+  chapter_id: string;
+  chapter_title: string;
+  chapter_endpoint: string;
+}
+
 interface Image {
   chapter_endpoint: string;
-  title: string;
+  chapter_name: string;
   chapter_image: ChapterImage[];
+  chapter: Chapter[];
 }
 
 const Chapter: React.FC = () => {
+  const [isFixed, setIsFixed] =useState(false)
+  const [isList, setList] =useState(false)
   const { endpoint = "" } = useParams<{ endpoint: string }>();
   const [chapter, setChapter] = useState<Image>({
     chapter_endpoint: "",
-    title: "",
+    chapter_name: "",
     chapter_image: [],
+    chapter: []
   });
 
   useEffect(() => {
@@ -27,27 +37,76 @@ const Chapter: React.FC = () => {
         setChapter(res);
       })
       .catch((err) => console.log(err));
+
+    const handleScroll = () => {
+      setIsFixed(window.scrollY > 0)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+
   }, [endpoint]);
 
+  const chapterNumMatch = endpoint.match(/chapter-(\d+)/);
+  const chapterNum = chapterNumMatch ? chapterNumMatch[1] : "";
+  const nextChapterNum = parseInt(chapterNum) + 1;
+  const prevChapterNum = parseInt(chapterNum) - 1;
+  const nextEndpoint = chapterNum
+    ? endpoint.replace(/chapter-\d+/, `chapter-${nextChapterNum}`)
+    : "";
+  const prevEndpoint = chapterNum
+    ? endpoint.replace(/chapter-\d+/, `chapter-${prevChapterNum}`)
+    : "";
+  const nextChapterUrl = `/chapter/${nextEndpoint}/`;
+  const prevChapterUrl = `/chapter/${prevEndpoint}/`;
   console.log(chapter);
 
+  const navigate = useNavigate()
   return (
-    <main className="text-center flex flex-col items-center mt-8">
-      <h1 className="font-bold w-11/12 sm:w-1/2 text-md sm:text-2xl mb-4">
-        {chapter.title}
-      </h1>
+    <main className="flex flex-col items-center mt-8">
+      <nav className={`flex justify-between w-11/12 bg-base-100 py-4 px-6 ${isFixed ? 'fixed top-0' : ""}`}>
+        <h1 className="font-bold capitalize w-full md:w-7/12 mt-4 text-lg sm:text-xl mb-4">
+          {chapter.chapter_name ? chapter.chapter_name : "Masih Loading..."}
+        </h1>
+        <ul className="flex justify-center gap-2 items-center text-2xl">
+          <li>
+            <label
+              title="daftar chapter"
+              className="uil uil-list-ui-alt px-2 rounded-md hover:shadow-lg bg-primary py-1"
+            ></label>
+          </li>
+          <li>
+            <button
+              title="sebelum"
+              onClick={() => navigate(`${prevChapterUrl}`)}
+              className="uil uil-arrow-left px-2 rounded-md hover:shadow-lg bg-primary py-1"
+            ></button>
+          </li>
+          <li>
+            <button
+              title="lanjut"
+              onClick={() => navigate(`${nextChapterUrl}`)}
+              className="uil uil-arrow-right px-2 rounded-md hover:shadow-lg bg-primary py-1"
+            ></button>
+          </li>
+        </ul>
+      </nav>
       <span className="divider"></span>
       <ol className="flex flex-col justify-center items-center">
-        {chapter.chapter_image.map((image) => (
-          <li key={image.chapter_id} className="w-full md:w-11/12">
-            <img
-              className="min-w-full min-h-full"
-              src={image.chapter_image_link}
-              alt={image.chapter_id}
-              loading="lazy"
-            />
-          </li>
-        ))}
+        {chapter.chapter_image
+          ? chapter.chapter_image.map((image) => (
+              <li key={image.chapter_id} className="w-full md:w-11/12">
+                <img
+                  className="min-w-full min-h-full"
+                  src={image.chapter_image_link}
+                  alt={image.chapter_id}
+                  loading="lazy"
+                />
+              </li>
+            ))
+          : "Loading"}
       </ol>
     </main>
   );

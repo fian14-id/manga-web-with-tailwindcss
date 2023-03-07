@@ -6,6 +6,7 @@ import "./css/Global.css";
 
 import Navbar from "./component/Navbar";
 import DarkMode from "./component/DarkMode";
+import AutoScrollToggle from "./component/ScrollButton";
 import NotFound from "./page/NotFound";
 
 const Home = lazy(() => import("./page/Home"));
@@ -28,7 +29,15 @@ function App() {
           <Route path="recommended" element={<Recommend />} />
           <Route path="genres" element={<Genres />} />
           <Route path="/detail/:endpoint" element={<Detail />} />
-          <Route path="/chapter/:endpoint" element={<Chapter />} />
+          <Route
+            path="/chapter/:endpoint"
+            element={
+              <>
+                <Chapter />
+                <AutoScrollToggle />
+              </>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

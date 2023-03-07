@@ -1,16 +1,8 @@
-import {useEffect} from "react";
 import { Setting } from "../config/Setting";
-import { popularManga } from "../config/FetchApi"
-import myLogo from "../assets/global-logo.png"
+import myLogo from "../assets/global-logo.webp"
 import Footer from "../component/Footer";
 
 const Beranda = () => {
-
-  useEffect(() => {
-    popularManga
-  },[])
-  
-
   return (
     <main className="w-11/12 m-auto mt-8">
       <div className="hero min-h-screen">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { DetailManga } from "../config/FetchApi";
 
-import image from "../assets/global-logo.png";
+import image from "../assets/global-logo.webp";
 import Footer from "../component/Footer";
 
 interface Genre {
@@ -54,11 +54,10 @@ const Detail: React.FC = () => {
         <label htmlFor="my-modal-4" className="text-primary link">
           Baca Selengkapnya...
         </label>
-
         <input type="checkbox" id="my-modal-4" className="modal-toggle" />
         <label htmlFor="my-modal-4" className="modal cursor-pointer">
           <label className="modal-box relative" htmlFor="">
-            <h3 className="text-lg font-bold">Sinopsis</h3>
+            <h1 className="text-lg font-bold">Sinopsis</h1>
             <p className="py-4 text-justify text-sm sm:text-md lg:text-xl mt-2">
               {manga.synopsis}
             </p>

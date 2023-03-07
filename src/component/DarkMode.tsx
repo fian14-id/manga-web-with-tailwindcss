@@ -16,7 +16,6 @@ const DarkMode = () => {
   return (
     <>
     <Timer />
-    <AutoScrollToggle />
       <label className="swap swap-rotate text-black dark:text-white fixed bottom-16 right-5 bg-primary p-2 rounded-full">
         <input type="checkbox" title="dark mode" onClick={toggleTheme} />
 

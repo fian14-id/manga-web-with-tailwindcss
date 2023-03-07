@@ -8,26 +8,27 @@ export const searchManga = async(q: string) => {
         return search.data.manga_list
     } catch (err) {
         console.log(err);
+        return err
     }
 }
 
 export const popularManga = async() => {
     try {
       const popular = await axios.get(`${apiKey}/manga/popular/1`);
-      console.log({ popularManga: popular.data.manga_list });
       return popular.data.manga_list
     } catch (err) {
         console.log(err);
+        return err;
     }
 }
 
 export const RecommendManga = async() => {
     try {
       const recomd = await axios.get(`${apiKey}/recommended`);
-      console.log({ recomManga: recomd.data.manga_list });
       return recomd.data.manga_list
     } catch (err) {
         console.log(err);
+        return err;
     }
 }
 
@@ -38,6 +39,7 @@ export const GenreManga = async() => {
       return genre.data.list_genre;
     } catch (err) {
         console.log(err);
+        return err;
     }
 }
 
@@ -49,6 +51,7 @@ export const DetailManga = async(endpoint: string) => {
       return detail.data;
     } catch (err) {
         console.log(err);
+        return err;
     }
 }
 
@@ -60,5 +63,6 @@ export const ChapterManga = async(endpoint: string) => {
       return detail.data;
     } catch (err) {
         console.log(err);
+        return err;
     }
 }

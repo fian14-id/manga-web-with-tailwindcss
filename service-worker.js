@@ -1,5 +1,5 @@
-const CACHE_NAME = "fncode-MaWb";
-const urlToCache = ["index.html", "offline.html"];
+const CACHE_NAME = "MaWb";
+const urlToCache = ["index.html", "/offline.html"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -48,7 +48,7 @@ self.addEventListener("fetch", (event) => {
           });
           return response;
         })
-        .catch(() => caches.match("offline.html"));
+        .catch(() => caches.match("/offline.html"));
     })
   );
   console.log("Fetching:", event.request.url);
