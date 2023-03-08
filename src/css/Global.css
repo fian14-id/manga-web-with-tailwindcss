@@ -14,6 +14,10 @@
     border-radius: 20px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .bg-cover {
     background: center no-repeat;
     background-size: cover;

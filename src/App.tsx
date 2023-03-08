@@ -1,7 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import "./css/minify.css";
+// import "./css/minify.css";
+import "./css/main.css"
 import "./css/Global.css";
 
 import Navbar from "./component/Navbar";
@@ -23,8 +24,8 @@ function App() {
       <Navbar />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="home" element={<Beranda />} />
+          <Route path="/" element={<Beranda />} />
+          <Route path="contact" element={<Home />} />
           <Route path="popular" element={<Popular />} />
           <Route path="recommended" element={<Recommend />} />
           <Route path="genres" element={<Genres />} />

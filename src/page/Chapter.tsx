@@ -61,7 +61,11 @@ const Chapter: React.FC = () => {
     : "";
   const nextChapterUrl = `/chapter/${nextEndpoint}/`;
   const prevChapterUrl = `/chapter/${prevEndpoint}/`;
-  console.log(chapter);
+
+  const isChapterOption = (chapt_endpoint: string) => {
+    window.scrollTo(0, 0);
+    navigate(`${chapt_endpoint}`)
+  }
 
   const navigate = useNavigate()
   return (
@@ -73,21 +77,21 @@ const Chapter: React.FC = () => {
         <ul className="flex justify-center gap-2 items-center text-2xl">
           <li>
             <label
-              title="daftar chapter"
+              title="daftar chapter" onClick={() => alert('fitur belum tersedia')} 
               className="uil uil-list-ui-alt px-2 rounded-md hover:shadow-lg bg-primary py-1"
             ></label>
           </li>
           <li>
             <button
               title="sebelum"
-              onClick={() => navigate(`${prevChapterUrl}`)}
+              onClick={() => isChapterOption(`${prevChapterUrl}`)}
               className="uil uil-arrow-left px-2 rounded-md hover:shadow-lg bg-primary py-1"
             ></button>
           </li>
           <li>
             <button
               title="lanjut"
-              onClick={() => navigate(`${nextChapterUrl}`)}
+              onClick={() => isChapterOption(`${nextChapterUrl}`)}
               className="uil uil-arrow-right px-2 rounded-md hover:shadow-lg bg-primary py-1"
             ></button>
           </li>
