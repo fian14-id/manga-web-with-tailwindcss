@@ -1,8 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// import "./css/minify.css";
-import "./css/main.css"
+import "./css/minify.css";
 import "./css/Global.css";
 
 import Navbar from "./component/Navbar";
