@@ -13,7 +13,6 @@ const Home = lazy(() => import("./page/Home"));
 const Beranda = lazy(() => import("./page/Beranda"));
 const Popular = lazy(() => import("./page/Popular"));
 const Recommend = lazy(() => import("./page/Recommend"));
-const Genres = lazy(() => import("./page/Genres"));
 const Detail = lazy(() => import("./page/Detail"));
 const Chapter = lazy(() => import("./page/Chapter"));
 
@@ -27,7 +26,6 @@ function App() {
           <Route path="contact" element={<Home />} />
           <Route path="popular" element={<Popular />} />
           <Route path="recommended" element={<Recommend />} />
-          <Route path="genres" element={<Genres />} />
           <Route path="/detail/:endpoint" element={<Detail />} />
           <Route path="/chapter/:endpoint" element={<Chapter />} />
           <Route path="*" element={<NotFound />} />
