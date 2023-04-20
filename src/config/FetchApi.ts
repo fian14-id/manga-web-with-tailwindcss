@@ -33,25 +33,25 @@ export const RecommendManga = async() => {
 }
 
 // can't for next because api rest not available
-// export const GenreManga = async() => {
-//     try {
-//       const genre = await axios.get(`${apiKey}/genres`);
-//       console.log({ genre: genre.data.list_genre });
-//       return genre.data.list_genre;
-//     } catch (err) {
-//         console.log(err);
-//         return err;
-//     }
-// }
-
-export const GetGenreManga = async() => {
-  try {
-    const genre = await axios.get(`${apiKey}/`)
-  } catch (err) {
-    console.log(err);
-    
-  }
+export const GenreManga = async() => {
+    try {
+      const genre = await axios.get(`${apiKey}/genres`);
+      console.log({ genre: genre.data.list_genre });
+      return genre.data.list_genre;
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
 }
+
+// export const GetGenreManga = async() => {
+//   try {
+//     const genre = await axios.get(`${apiKey}/`)
+//   } catch (err) {
+//     console.log(err);
+    
+//   }
+// }
 
 export const DetailManga = async(endpoint: string) => {
     try {
