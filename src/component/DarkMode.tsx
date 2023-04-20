@@ -16,7 +16,7 @@ const DarkMode = () => {
   return (
     <>
     <Timer />
-      <label className="swap swap-rotate text-black dark:text-white fixed bottom-20 left-8 bg-primary p-2 rounded-full">
+      <label className="swap swap-rotate text-black dark:text-white fixed bottom-20 mb-2 left-8 bg-primary p-2 rounded-full">
         <input type="checkbox" title="dark mode" onClick={toggleTheme} />
 
         <svg

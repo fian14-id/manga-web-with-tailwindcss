@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChapterManga, DetailManga } from "../config/FetchApi";
+import Footer from "../component/Footer";
 
 interface ChapterImage {
   chapter_id: string;
@@ -37,16 +38,6 @@ const Chapter: React.FC = () => {
         setChapter(res);
       })
       .catch((err) => console.log(err));
-
-    const handleScroll = () => {
-      setIsFixed(window.scrollY > 0)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-
   }, [endpoint]);
 
   const chapterNumMatch = endpoint.match(/chapter-(\d+)/);
@@ -67,20 +58,20 @@ const Chapter: React.FC = () => {
     navigate(`${chapt_endpoint}`)
   }
 
-  const navigate = useNavigate()
-  return (
-    <main className="flex flex-col items-center mt-8">
-      <nav className={`flex justify-between w-11/12 bg-base-100 py-4 px-6 ${isFixed ? 'fixed top-0' : ""}`}>
+  const Nav = () => {
+    return (
+      <nav className={`flex justify-between w-11/12 bg-base-100 py-4 px-6`}>
         <h1 className="font-bold capitalize w-full md:w-7/12 mt-4 text-lg sm:text-xl mb-4">
           {chapter.chapter_name ? chapter.chapter_name : "Masih Loading..."}
         </h1>
         <ul className="flex justify-center gap-2 items-center text-2xl">
-          <li>
+          {/* <li>
             <label
-              title="daftar chapter" onClick={() => alert('fitur belum tersedia')} 
+              title="daftar chapter"
+              onClick={() => alert("fitur belum tersedia")}
               className="uil uil-list-ui-alt px-2 rounded-md hover:shadow-lg bg-primary py-1"
             ></label>
-          </li>
+          </li> */}
           <li>
             <button
               title="sebelum"
@@ -97,6 +88,13 @@ const Chapter: React.FC = () => {
           </li>
         </ul>
       </nav>
+    );
+  }
+
+  const navigate = useNavigate()
+  return (
+    <main className="flex flex-col items-center mt-8">
+      <Nav />
       <span className="divider"></span>
       <ol className="flex flex-col justify-center items-center">
         {chapter.chapter_image
@@ -112,6 +110,8 @@ const Chapter: React.FC = () => {
             ))
           : "Loading"}
       </ol>
+      <Nav />
+      <Footer />
     </main>
   );
 };

@@ -63,7 +63,7 @@ const Navbar : React.FC = () => {
       </div>
       <div className="navbar-center">
         <span className="btn btn-ghost normal-case text-xl font-bold">
-          <Link to="/home">{Setting.title}</Link>
+          <Link to="/">{Setting.title}</Link>
         </span>
       </div>
       <nav className="navbar-end">
@@ -96,14 +96,10 @@ const Navbar : React.FC = () => {
             <div className="flex justify-center mt-4">
               <input
                 type="text"
-                placeholder="type here..."
+                placeholder="min input 3 letter..."
                 onChange={(e) => Search(e.target.value)}
-                className="outline-none w-full shadow-sm focus:shadow-md ease-in-out duration-300 px-4 rounded-md bg-none dark:bg-none"
+                className="outline-none w-full shadow-sm focus:shadow-md ease-in-out duration-300 px-4 py-2 rounded-md bg-none dark:bg-none"
               />
-              <button
-                title="search"
-                className="uil uil-search btn ml-2"
-              ></button>
             </div>
             {result ? (
               result.map((data, i) => {

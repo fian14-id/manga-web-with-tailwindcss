@@ -31,10 +31,10 @@ export const Setting = {
       path: "/popular",
       name: "Popular",
     },
-    {
-      path: "/genres",
-      name: "Genre List",
-    },
+    // {
+    //   path: "/genres",
+    //   name: "Genre List",
+    // },
   ],
   developer: {
     author: "Fian14-id",
