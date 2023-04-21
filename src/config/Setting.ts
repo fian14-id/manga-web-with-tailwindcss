@@ -1,6 +1,6 @@
 export const Setting = {
   title: "Manga-Web",
-  description: "read your favorite manga here. Indonesian Language Manga",
+  description: "read your favorite manga here. Indonesian Language Manga and this web is very simple",
   sosmed: {
     link: [
       "https://facebook.com/fian14.id",

@@ -1,7 +1,9 @@
 import axios from "axios";
 
+// jika punya API sendiri bisa diubah asalkan mengerti cara fetch api
 const apiKey = "https://manga.fian014.site/api";
 
+// saya menggunakan nama function sesuai fungsinya
 export const searchManga = async(q: string) => {
     try {
         const search = await axios.get(`${apiKey}/search/${q}`)        
@@ -32,7 +34,7 @@ export const RecommendManga = async() => {
     }
 }
 
-// can't for next because api rest not available
+// karena API tidak mendukung genre jadinya dibatalkan fitur tersebut
 export const GenreManga = async() => {
     try {
       const genre = await axios.get(`${apiKey}/genres`);
@@ -43,15 +45,6 @@ export const GenreManga = async() => {
         return err;
     }
 }
-
-// export const GetGenreManga = async() => {
-//   try {
-//     const genre = await axios.get(`${apiKey}/`)
-//   } catch (err) {
-//     console.log(err);
-    
-//   }
-// }
 
 export const DetailManga = async(endpoint: string) => {
     try {
