@@ -5,7 +5,7 @@ Terima kasih telah berkunjung. Ini adalah project manga web berbahasa Indonesia 
 ## Install Project
 
 ```bash
-git clone https://github.com/fian14-id/manga-web-with-tailwindcss
+git clone https://github.com/fian14-id/manga-web-with-tailwindcss.git
 cd manga-web-with-tailwindcss
 npm i # atau yarn install
 npm run dev # atau yarn dev
