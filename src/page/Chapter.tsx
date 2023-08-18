@@ -59,6 +59,10 @@ const Chapter: React.FC = () => {
   }
 
   const Nav = () => {
+
+    const pageTitle = chapter.chapter_name
+     useEffect(()=> {document.title = pageTitle},[])
+     
     return (
       <nav className={`flex justify-between w-11/12 bg-base-100 py-4 px-6`}>
         <h1 className="font-bold capitalize w-full md:w-7/12 mt-4 text-lg sm:text-xl mb-4">
