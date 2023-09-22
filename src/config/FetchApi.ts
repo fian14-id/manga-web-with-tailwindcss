@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // jika punya API sendiri bisa diubah asalkan mengerti cara fetch api
-const apiKey = "https://manga.fian014.site/api";
+const apiKey = "https://manga-api-blue.vercel.app/api";
 
 // saya menggunakan nama function sesuai fungsinya
 export const searchManga = async(q: string) => {
